@@ -48,8 +48,7 @@ public class Depot extends Point implements Serializable {
 			return false;
 		}
 		Depot other = (Depot) object;
-		if ((this.getId() == null && other.getId() != null) || 
-				(this.getId() != null && !this.getId().equals(other.getId()))) {
+		if ((this.getId() == null && other.getId() != null) || (this.getId() != null && !this.getId().equals(other.getId()))) {
 			return false;
 		}
 		return true;

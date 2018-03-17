@@ -63,7 +63,7 @@ public class Client extends Point implements Serializable {
 
 	/**
 	 * TODO.
-	 * @param v
+	 * @param v TODO.
 	 * @return 
 	 */
 	public boolean setVehicule(Vehicule v) {
@@ -87,7 +87,7 @@ public class Client extends Point implements Serializable {
 
 	/**
 	 * TODO.
-	 * @param pos 
+	 * @param pos TODO.
 	 */
 	public void setPosition(int pos) {
 		if (pos < 0) {
@@ -110,8 +110,7 @@ public class Client extends Point implements Serializable {
 			return false;
 		}
 		Client other = (Client) object;
-		if ((super.getId() == null && other.getId() != null) || 
-				(this.getId() != null && !this.getId().equals(other.getId()))) {
+		if ((super.getId() == null && other.getId() != null) || (this.getId() != null && !this.getId().equals(other.getId()))) {
 			return false;
 		}
 		return true;

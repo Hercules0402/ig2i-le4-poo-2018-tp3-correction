@@ -18,7 +18,7 @@ public class JpaClientDao extends JpaDao<Client> implements ClientDao {
 	}
 
 	protected static JpaClientDao getInstance() {
-		if (instance == null){ 
+		if (instance == null) { 
 			instance = new JpaClientDao();
 		}
 		return instance;

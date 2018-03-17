@@ -28,9 +28,8 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "POINT")
-@Inheritance(strategy=InheritanceType.JOINED)
-@DiscriminatorColumn(name="POINTTYPE",
-	discriminatorType = DiscriminatorType.INTEGER)
+@Inheritance(strategy = InheritanceType.JOINED)
+@DiscriminatorColumn(name = "POINTTYPE", discriminatorType = DiscriminatorType.INTEGER)
 @NamedQueries({
 		@NamedQuery(name = "Point.findAll",
 			query = "SELECT p FROM Point p"),
@@ -82,8 +81,8 @@ public abstract  class Point implements Serializable {
 
 	/**
 	 * TODO.
-	 * @param x
-	 * @param y 
+	 * @param x TODO.
+	 * @param y TODO.
 	 */
 	public Point(double x, double y) {
 		this.routes = new HashMap<>();
@@ -93,9 +92,9 @@ public abstract  class Point implements Serializable {
 
 	/**
 	 * TODO.
-	 * @param id
-	 * @param x
-	 * @param y 
+	 * @param id TODO.
+	 * @param x TODO.
+	 * @param y TODO.
 	 */
 	public Point(int id, double x, double y) {
 		this();
@@ -106,8 +105,8 @@ public abstract  class Point implements Serializable {
 
 	/**
 	 * TODO.
-	 * @param p
-	 * @param distance
+	 * @param p TODO.
+	 * @param distance TODO.
 	 * @return 
 	 */
 	public boolean addDestination(Point p, double distance) {
@@ -136,7 +135,7 @@ public abstract  class Point implements Serializable {
 
 	/**
 	 * TODO.
-	 * @param p
+	 * @param p TODO.
 	 * @return 
 	 */
 	public double getDistanceTo(Point p) {

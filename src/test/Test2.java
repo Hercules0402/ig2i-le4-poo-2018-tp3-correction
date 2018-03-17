@@ -19,7 +19,7 @@ public class Test2 {
 
 	/**
 	 * TODO.
-	 * @param args 
+	 * @param args TODO.
 	 */
 	public static void main(String[] args) {
 		DaoFactory fabrique = DaoFactory.getDaoFactory(PersistenceType.JPA);

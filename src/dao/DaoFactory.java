@@ -7,7 +7,7 @@ package dao;
 public abstract class DaoFactory {
 	/**
 	 * TODO.
-	 * @param type
+	 * @param type TODO.
 	 * @return 
 	 */
 	public static DaoFactory getDaoFactory(PersistenceType type) {

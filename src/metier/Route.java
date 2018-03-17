@@ -55,9 +55,9 @@ public class Route implements Serializable {
 
 	/**
 	 * TODO.
-	 * @param depart
-	 * @param arrivee
-	 * @param distance 
+	 * @param depart TODO.
+	 * @param arrivee TODO.
+	 * @param distance TODO. 
 	 */
 	public Route(Point depart, Point arrivee, double distance) {
 		this.ndepart = depart;

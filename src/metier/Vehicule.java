@@ -78,8 +78,8 @@ public class Vehicule implements Serializable {
 
 	/**
 	 * TODO.
-	 * @param depot
-	 * @param capacite 
+	 * @param depot TODO.
+	 * @param capacite TODO.
 	 */
 	public Vehicule(Depot depot, int capacite) {
 		this.clientList = new ArrayList<>();
@@ -91,9 +91,9 @@ public class Vehicule implements Serializable {
 
 	/**
 	 * TODO.
-	 * @param id
-	 * @param depot
-	 * @param capacite 
+	 * @param id TODO.
+	 * @param depot TODO.
+	 * @param capacite TODO.
 	 */
 	public Vehicule(int id, Depot depot, int capacite) {
 		this.id = id;
@@ -113,7 +113,7 @@ public class Vehicule implements Serializable {
 
 	/**
 	 * TODO.
-	 * @param c
+	 * @param c TODO.
 	 * @return 
 	 */
 	public boolean addClient(Client c) {
@@ -145,7 +145,7 @@ public class Vehicule implements Serializable {
 
 	/**
 	 * TODO.
-	 * @param p
+	 * @param p TODO.
 	 * @return 
 	 */
 	public boolean setPlanning(Planning p) {
@@ -200,8 +200,7 @@ public class Vehicule implements Serializable {
 			return false;
 		}
 		Vehicule other = (Vehicule) object;
-		if ((this.id == null && other.id != null) || 
-				(this.id != null && !this.id.equals(other.id))) {
+		if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
 			return false;
 		}
 		return true;
@@ -210,7 +209,7 @@ public class Vehicule implements Serializable {
 	@Override
 	public String toString() {
 		String str = "metier.Vehicule[ id=" + id + " cost=" + cout 
-			+ " capa utilisee=" + capaciteutilisee + "]\n";
+				+ " capa utilisee=" + capaciteutilisee + "]\n";
 		for (Client c : clientList) {
 			str += "\tid=" + c.getId() + " pos=" + c.getPosition() + "\n";
 		}

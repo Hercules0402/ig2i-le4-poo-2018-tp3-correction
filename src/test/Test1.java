@@ -1,6 +1,9 @@
 package test;
 
-import metier.*;
+import metier.Client;
+import metier.Depot;
+import metier.Planning;
+import metier.Vehicule;
 
 /**
  * TODO.
@@ -10,7 +13,7 @@ public class Test1 {
 
 	/**
 	 * TODO.
-	 * @param args 
+	 * @param args TODO.
 	 */
 	public static void main(String[] args) {
 		Depot d = new Depot(0, 0, 0);

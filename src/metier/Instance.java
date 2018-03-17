@@ -177,7 +177,7 @@ public class Instance implements Serializable {
 		for (Point p : points) {
 			s += "\n\t" + p;
 		}
-		s+= "\nVehicules : ";
+		s += "\nVehicules : ";
 		for (Vehicule v : vehicules) {
 			s += "\n\t" + v;
 		}

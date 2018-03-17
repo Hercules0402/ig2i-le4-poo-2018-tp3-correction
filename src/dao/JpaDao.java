@@ -23,7 +23,7 @@ public abstract class JpaDao<T> implements Dao<T> {
 
 	/**
 	 * TODO.
-	 * @param entityClass 
+	 * @param entityClass TODO.
 	 */
 	public JpaDao(Class<T> entityClass) {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory(PUname);
@@ -103,7 +103,7 @@ public abstract class JpaDao<T> implements Dao<T> {
 			et.begin();
 			em.createQuery(cd).executeUpdate();
 			et.commit();
-		} catch(Exception e) {
+		} catch (Exception e) {
 			et.rollback();
 			return false;
 		}
