@@ -48,7 +48,9 @@ public class Depot extends Point implements Serializable {
 			return false;
 		}
 		Depot other = (Depot) object;
+		//CHECKSTYLE:OFF: LineLengthCheck
 		if ((this.getId() == null && other.getId() != null) || (this.getId() != null && !this.getId().equals(other.getId()))) {
+			//CHECKSTYLE:ON
 			return false;
 		}
 		return true;

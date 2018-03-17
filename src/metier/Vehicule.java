@@ -164,7 +164,7 @@ public class Vehicule implements Serializable {
 	 */
 	public void updatePositionClients() {
 		int pos = 0;
-		for(Client c : clientList) {
+		for (Client c : clientList) {
 			c.setPosition(pos);
 			pos++;
 		}

@@ -110,7 +110,9 @@ public class Client extends Point implements Serializable {
 			return false;
 		}
 		Client other = (Client) object;
+		//CHECKSTYLE:OFF: LineLengthCheck
 		if ((super.getId() == null && other.getId() != null) || (this.getId() != null && !this.getId().equals(other.getId()))) {
+			//CHECKSTYLE:ON
 			return false;
 		}
 		return true;
