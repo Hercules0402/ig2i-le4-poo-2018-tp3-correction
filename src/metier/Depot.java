@@ -15,9 +15,11 @@ import javax.persistence.Table;
 @Table(name = "DEPOT")
 @DiscriminatorValue("1")
 @NamedQueries({
-	@NamedQuery(name = "Depot.findAll", query = "SELECT d FROM Depot d"),
-	@NamedQuery(name = "Depot.findById", query = "SELECT d FROM Depot d WHERE d.id = :id")}
-)
+		@NamedQuery(name = "Depot.findAll",
+			query = "SELECT d FROM Depot d"),
+		@NamedQuery(name = "Depot.findById",
+			query = "SELECT d FROM Depot d WHERE d.id = :id")
+})
 public class Depot extends Point implements Serializable {
 
 	public Depot() {
@@ -46,7 +48,8 @@ public class Depot extends Point implements Serializable {
 			return false;
 		}
 		Depot other = (Depot) object;
-		if ((this.getId() == null && other.getId() != null) || (this.getId() != null && !this.getId().equals(other.getId()))) {
+		if ((this.getId() == null && other.getId() != null) || 
+				(this.getId() != null && !this.getId().equals(other.getId()))) {
 			return false;
 		}
 		return true;

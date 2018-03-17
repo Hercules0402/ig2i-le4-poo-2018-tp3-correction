@@ -6,7 +6,7 @@ import metier.Planning;
  * TODO.
  * @author dcattaru
  */
-public class JpaPlanningDao extends JpaDao<Planning> implements PlanningDao{
+public class JpaPlanningDao extends JpaDao<Planning> implements PlanningDao {
 
 	private static JpaPlanningDao instance;
 
@@ -14,7 +14,7 @@ public class JpaPlanningDao extends JpaDao<Planning> implements PlanningDao{
 		super(Planning.class);
 	}
 
-	protected static JpaPlanningDao getInstance(){
+	protected static JpaPlanningDao getInstance() {
 		if (instance == null) {
 			instance = new JpaPlanningDao();
 		}

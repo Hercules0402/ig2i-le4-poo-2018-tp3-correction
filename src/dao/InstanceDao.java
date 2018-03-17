@@ -1,6 +1,5 @@
 package dao;
 
-
 import metier.Instance;
 
 /**

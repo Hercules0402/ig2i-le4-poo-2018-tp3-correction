@@ -25,10 +25,13 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "INSTANCE")
 @XmlRootElement
 @NamedQueries({
-	@NamedQuery(name = "Instance.findAll", query = "SELECT i FROM Instance i"),
-	@NamedQuery(name = "Instance.findById", query = "SELECT i FROM Instance i WHERE i.id = :id"),
-	@NamedQuery(name = "Instance.findByNom", query = "SELECT i FROM Instance i WHERE i.nom = :nom")}
-)
+		@NamedQuery(name = "Instance.findAll", 
+			query = "SELECT i FROM Instance i"),
+		@NamedQuery(name = "Instance.findById",
+			query = "SELECT i FROM Instance i WHERE i.id = :id"),
+		@NamedQuery(name = "Instance.findByNom",
+			query = "SELECT i FROM Instance i WHERE i.nom = :nom")
+})
 public class Instance implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -73,6 +76,9 @@ public class Instance implements Serializable {
 		return this.points.get(i).getDistanceTo(this.points.get(j));
 	}
 
+	/**
+	 * TODO.
+	 */
 	public void clear() {
 		for (Point p : points) {
 			if (p instanceof Client) {
@@ -89,6 +95,10 @@ public class Instance implements Serializable {
 		return this.getClients().size();
 	}
 
+	/**
+	 * TODO.
+	 * @return 
+	 */
 	public Depot getDepot() {
 		for (Point p : points) {
 			if (p instanceof Depot) {
@@ -98,6 +108,10 @@ public class Instance implements Serializable {
 		return null;
 	}
 
+	/**
+	 * TODO.
+	 * @return 
+	 */
 	public List<Client> getClients() {
 		List<Client> clients = new ArrayList<>();
 		for (Point p : points) {
@@ -116,7 +130,7 @@ public class Instance implements Serializable {
 		return this.planning;
 	}
 
-	public void addVehiculeInPlanning (Vehicule v) {
+	public void addVehiculeInPlanning(Vehicule v) {
 		this.planning.addVehicule(v);
 	}
 
@@ -158,14 +172,14 @@ public class Instance implements Serializable {
 
 	@Override
 	public String toString() {
-		String s = "Instance : id = "+id;
+		String s = "Instance : id = " + id;
 		s += "\nPoints : ";
 		for (Point p : points) {
-			s += "\n\t"+p;
+			s += "\n\t" + p;
 		}
 		s+= "\nVehicules : ";
 		for (Vehicule v : vehicules) {
-			s += "\n\t"+v;
+			s += "\n\t" + v;
 		}
 		return s;
 	}

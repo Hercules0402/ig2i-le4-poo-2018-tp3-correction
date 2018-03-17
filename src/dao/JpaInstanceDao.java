@@ -7,7 +7,7 @@ import metier.Instance;
  * TODO.
  * @author dcattaru
  */
-public class JpaInstanceDao extends JpaDao<Instance> implements InstanceDao{
+public class JpaInstanceDao extends JpaDao<Instance> implements InstanceDao {
 
 	private static JpaInstanceDao instance;
 
@@ -15,7 +15,7 @@ public class JpaInstanceDao extends JpaDao<Instance> implements InstanceDao{
 		super(Instance.class);
 	}
 
-	protected static JpaInstanceDao getInstance(){
+	protected static JpaInstanceDao getInstance() {
 		if (instance == null) {
 			instance = new JpaInstanceDao();
 		}

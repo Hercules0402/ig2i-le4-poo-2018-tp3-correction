@@ -19,12 +19,17 @@ import javax.persistence.Table;
 @Table(name = "CLIENT")
 @DiscriminatorValue("2")
 @NamedQueries({
-	@NamedQuery(name = "Client.findAll", query = "SELECT c FROM Client c"),
-	@NamedQuery(name = "Client.findById", query = "SELECT c FROM Client c WHERE c.id = :id"),
-	@NamedQuery(name = "Client.findByDemand", query = "SELECT c FROM Client c WHERE c.demand = :demand"),
-	@NamedQuery(name = "Client.findByPosition", query = "SELECT c FROM Client c WHERE c.position = :position"),
-	@NamedQuery(name = "Client.findNotServed", query = "SELECT c FROM Client c WHERE c.nvehicule = :null")}
-)
+		@NamedQuery(name = "Client.findAll",
+			query = "SELECT c FROM Client c"),
+		@NamedQuery(name = "Client.findById",
+			query = "SELECT c FROM Client c WHERE c.id = :id"),
+		@NamedQuery(name = "Client.findByDemand",
+			query = "SELECT c FROM Client c WHERE c.demand = :demand"),
+		@NamedQuery(name = "Client.findByPosition",
+			query = "SELECT c FROM Client c WHERE c.position = :position"),
+		@NamedQuery(name = "Client.findNotServed",
+			query = "SELECT c FROM Client c WHERE c.nvehicule = :null")
+})
 public class Client extends Point implements Serializable {
 
 	@Basic(optional = false)
@@ -56,6 +61,11 @@ public class Client extends Point implements Serializable {
 		this.position = -1;
 	}
 
+	/**
+	 * TODO.
+	 * @param v
+	 * @return 
+	 */
 	public boolean setVehicule(Vehicule v) {
 		if (v == null) {
 			return false;
@@ -75,7 +85,11 @@ public class Client extends Point implements Serializable {
 		return position;
 	}
 
-	public void setPosition(int pos){
+	/**
+	 * TODO.
+	 * @param pos 
+	 */
+	public void setPosition(int pos) {
 		if (pos < 0) {
 			return;
 		}
@@ -96,7 +110,8 @@ public class Client extends Point implements Serializable {
 			return false;
 		}
 		Client other = (Client) object;
-		if ((super.getId() == null && other.getId() != null) || (this.getId() != null && !this.getId().equals(other.getId()))) {
+		if ((super.getId() == null && other.getId() != null) || 
+				(this.getId() != null && !this.getId().equals(other.getId()))) {
 			return false;
 		}
 		return true;

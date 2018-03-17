@@ -16,17 +16,23 @@ import javax.persistence.criteria.Root;
  */
 public abstract class JpaDao<T> implements Dao<T> {
 	protected static EntityManager em;
+	//CHECKSTYLE:OFF: MemberNameCheck
 	private final String PUname = "routagePU";
+	//CHECKSTYLE:ON
 	private final Class<T> entityClass;
 
-	public JpaDao(Class<T> entityClass){
+	/**
+	 * TODO.
+	 * @param entityClass 
+	 */
+	public JpaDao(Class<T> entityClass) {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory(PUname);
 		em = emf.createEntityManager();
 		this.entityClass = entityClass;
 	}
 
 	@Override
-	public boolean create(T obj){
+	public boolean create(T obj) {
 		EntityTransaction et = em.getTransaction();
 		try {
 			et.begin();
@@ -41,7 +47,7 @@ public abstract class JpaDao<T> implements Dao<T> {
 	}
 
 	@Override
-	public boolean update(T obj){
+	public boolean update(T obj) {
 		EntityTransaction et = em.getTransaction();
 		try {
 			et.begin();
@@ -55,7 +61,7 @@ public abstract class JpaDao<T> implements Dao<T> {
 	}
 
 	@Override
-	public boolean delete(T obj){
+	public boolean delete(T obj) {
 		EntityTransaction et = em.getTransaction();
 		try {
 			et.begin();
@@ -69,19 +75,19 @@ public abstract class JpaDao<T> implements Dao<T> {
 	}
 
 	@Override
-	public void close(){
+	public void close() {
 		if (em != null) {
 			em.close();
 		}
 	}
 
 	@Override
-	public T find (Integer id){
+	public T find(Integer id) {
 		return em.find(entityClass, id);
 	}
 
 	@Override
-	public Collection<T> findAll(){
+	public Collection<T> findAll() {
 		CriteriaQuery q = em.getCriteriaBuilder().createQuery(entityClass);
 		Root<T> all = q.from(entityClass);
 		q.select(all);
@@ -89,7 +95,7 @@ public abstract class JpaDao<T> implements Dao<T> {
 	}
 
 	@Override
-	public boolean deleteAll(){
+	public boolean deleteAll() {
 		EntityTransaction et = em.getTransaction();
 		try {
 			CriteriaBuilder cb = em.getCriteriaBuilder();

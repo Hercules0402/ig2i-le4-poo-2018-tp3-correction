@@ -9,7 +9,7 @@ import metier.Vehicule;
  * TODO.
  * @author dcattaru
  */
-public class JpaVehiculeDao extends JpaDao<Vehicule> implements VehiculeDao{
+public class JpaVehiculeDao extends JpaDao<Vehicule> implements VehiculeDao {
 
 	private static JpaVehiculeDao instance;
 
@@ -17,7 +17,7 @@ public class JpaVehiculeDao extends JpaDao<Vehicule> implements VehiculeDao{
 		super(Vehicule.class);
 	}
 
-	protected static JpaVehiculeDao getInstance(){
+	protected static JpaVehiculeDao getInstance() {
 		if (instance == null) {
 			instance = new JpaVehiculeDao();
 		}

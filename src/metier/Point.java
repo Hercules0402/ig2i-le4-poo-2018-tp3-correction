@@ -32,12 +32,17 @@ import javax.persistence.Table;
 @DiscriminatorColumn(name="POINTTYPE",
 	discriminatorType = DiscriminatorType.INTEGER)
 @NamedQueries({
-	@NamedQuery(name = "Point.findAll", query = "SELECT p FROM Point p"),
-	@NamedQuery(name = "Point.findById", query = "SELECT p FROM Point p WHERE p.id = :id"),
-	@NamedQuery(name = "Point.findByPointtype", query = "SELECT p FROM Point p WHERE p.pointtype = :pointtype"),
-	@NamedQuery(name = "Point.findByX", query = "SELECT p FROM Point p WHERE p.x = :x"),
-	@NamedQuery(name = "Point.findByY", query = "SELECT p FROM Point p WHERE p.y = :y")}
-)
+		@NamedQuery(name = "Point.findAll",
+			query = "SELECT p FROM Point p"),
+		@NamedQuery(name = "Point.findById",
+			query = "SELECT p FROM Point p WHERE p.id = :id"),
+		@NamedQuery(name = "Point.findByPointtype",
+			query = "SELECT p FROM Point p WHERE p.pointtype = :pointtype"),
+		@NamedQuery(name = "Point.findByX",
+			query = "SELECT p FROM Point p WHERE p.x = :x"),
+		@NamedQuery(name = "Point.findByY",
+			query = "SELECT p FROM Point p WHERE p.y = :y")
+})
 public abstract  class Point implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -50,30 +55,48 @@ public abstract  class Point implements Serializable {
 	private Integer pointtype;
 	@Basic(optional = false)
 	@Column(name = "X")
+	//CHECKSTYLE:OFF: MemberNameCheck
 	private double x;
+	//CHECKSTYLE:ON
 	@Basic(optional = false)
 	@Column(name = "Y")
+	//CHECKSTYLE:OFF: MemberNameCheck
 	private double y;
+	//CHECKSTYLE:ON
 	@JoinColumn(name = "NINSTANCE", referencedColumnName = "ID")
 	@ManyToOne
 	private Instance instance;
-	@MapKey(name="narrivee")
+	@MapKey(name = "narrivee")
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "ndepart")
 	private Map<Point, Route> routes;
 
-	public Point(){
+	/**
+	 * TODO.
+	 */
+	public Point() {
 		this.routes = new HashMap<>();
 		this.x = 0;
 		this.y = 0;
 		this.id = -1;
 	}
 
+	/**
+	 * TODO.
+	 * @param x
+	 * @param y 
+	 */
 	public Point(double x, double y) {
 		this.routes = new HashMap<>();
 		this.x = x;
 		this.y = y;
 	}
 
+	/**
+	 * TODO.
+	 * @param id
+	 * @param x
+	 * @param y 
+	 */
 	public Point(int id, double x, double y) {
 		this();
 		this.x = x;
@@ -81,6 +104,12 @@ public abstract  class Point implements Serializable {
 		this.id = id;
 	}
 
+	/**
+	 * TODO.
+	 * @param p
+	 * @param distance
+	 * @return 
+	 */
 	public boolean addDestination(Point p, double distance) {
 		if (p == null) {
 			return false;
@@ -105,7 +134,12 @@ public abstract  class Point implements Serializable {
 		return y;
 	}
 
-	public double getDistanceTo(Point p){
+	/**
+	 * TODO.
+	 * @param p
+	 * @return 
+	 */
+	public double getDistanceTo(Point p) {
 		if (this.routes.containsKey(p)) {
 			return this.routes.get(p).getDistance();
 		}

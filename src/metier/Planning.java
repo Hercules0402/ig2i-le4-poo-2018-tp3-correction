@@ -24,10 +24,13 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "PLANNING")
 @NamedQueries({
-	@NamedQuery(name = "Planning.findAll", query = "SELECT p FROM Planning p"),
-	@NamedQuery(name = "Planning.findById", query = "SELECT p FROM Planning p WHERE p.id = :id"),
-	@NamedQuery(name = "Planning.findByCout", query = "SELECT p FROM Planning p WHERE p.cout = :cout")}
-)
+		@NamedQuery(name = "Planning.findAll",
+			query = "SELECT p FROM Planning p"),
+		@NamedQuery(name = "Planning.findById",
+			query = "SELECT p FROM Planning p WHERE p.id = :id"),
+		@NamedQuery(name = "Planning.findByCout",
+			query = "SELECT p FROM Planning p WHERE p.cout = :cout")
+})
 public class Planning implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -36,7 +39,6 @@ public class Planning implements Serializable {
 	@Basic(optional = false)
 	@Column(name = "ID")
 	private Integer id;
-	// @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
 	@Column(name = "COUT")
 	private Double cout;
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "nplanning")
@@ -50,12 +52,17 @@ public class Planning implements Serializable {
 		this.cout = 0.0;
 	}
 
-	protected void clear(){
+	protected void clear() {
 		this.vehiculeSet.clear();
 		this.cout = 0.0;
 	}
 
-	public boolean addVehicule(Vehicule v){
+	/**
+	 * TODO.
+	 * @param v
+	 * @return 
+	 */
+	public boolean addVehicule(Vehicule v) {
 		if (v == null) {
 			return false;
 		}
@@ -69,17 +76,20 @@ public class Planning implements Serializable {
 		return true;
 	}
 
-	public int getNbVehicules () {
+	public int getNbVehicules() {
 		return this.vehiculeSet.size();
 	}
 
-	public void updatePositionClients(){
+	/**
+	 * TODO.
+	 */
+	public void updatePositionClients() {
 		for (Vehicule v : vehiculeSet) {
 			v.updatePositionClients();
 		}
 	}
 
-	public void updateCout(double deltaCout){
+	public void updateCout(double deltaCout) {
 		this.cout += deltaCout;
 	}
 

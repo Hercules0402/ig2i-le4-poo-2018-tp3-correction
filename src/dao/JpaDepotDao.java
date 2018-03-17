@@ -6,7 +6,7 @@ import metier.Depot;
  * TODO.
  * @author dcattaru
  */
-public class JpaDepotDao extends JpaDao<Depot> implements DepotDao{
+public class JpaDepotDao extends JpaDao<Depot> implements DepotDao {
 
 	private static JpaDepotDao instance;
 
@@ -14,7 +14,7 @@ public class JpaDepotDao extends JpaDao<Depot> implements DepotDao{
 		super(Depot.class);
 	}
 
-	protected static JpaDepotDao getInstance(){
+	protected static JpaDepotDao getInstance() {
 		if (instance == null) {
 			instance = new JpaDepotDao();
 		}

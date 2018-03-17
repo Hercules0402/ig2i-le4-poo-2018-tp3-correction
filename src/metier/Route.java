@@ -20,10 +20,13 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "ROUTE")
 @NamedQueries({
-	@NamedQuery(name = "Route.findAll", query = "SELECT r FROM Route r"),
-	@NamedQuery(name = "Route.findById", query = "SELECT r FROM Route r WHERE r.id = :id"),
-	@NamedQuery(name = "Route.findByDistance", query = "SELECT r FROM Route r WHERE r.distance = :distance")}
-)
+		@NamedQuery(name = "Route.findAll",
+			query = "SELECT r FROM Route r"),
+		@NamedQuery(name = "Route.findById",
+			query = "SELECT r FROM Route r WHERE r.id = :id"),
+		@NamedQuery(name = "Route.findByDistance",
+			query = "SELECT r FROM Route r WHERE r.distance = :distance")
+})
 public class Route implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -32,7 +35,6 @@ public class Route implements Serializable {
 	@Basic(optional = false)
 	@Column(name = "ID")
 	private Integer id;
-	// @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
 	@Column(name = "DISTANCE")
 	private Double distance;
 	@JoinColumn(name = "NARRIVEE", referencedColumnName = "ID")
@@ -42,12 +44,21 @@ public class Route implements Serializable {
 	@ManyToOne(optional = false)
 	private Point ndepart;
 
+	/**
+	 * TODO.
+	 */
 	public Route() {
 		this.ndepart = null;
 		this.narrivee = null;
 		this.distance = Double.MAX_VALUE;
 	}
 
+	/**
+	 * TODO.
+	 * @param depart
+	 * @param arrivee
+	 * @param distance 
+	 */
 	public Route(Point depart, Point arrivee, double distance) {
 		this.ndepart = depart;
 		this.narrivee = arrivee;

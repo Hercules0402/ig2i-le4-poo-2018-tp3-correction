@@ -24,13 +24,19 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "VEHICULE")
 @NamedQueries({
-	@NamedQuery(name = "Vehicule.findAll", query = "SELECT v FROM Vehicule v"),
-	@NamedQuery(name = "Vehicule.findById", query = "SELECT v FROM Vehicule v WHERE v.id = :id"),
-	@NamedQuery(name = "Vehicule.findByCout", query = "SELECT v FROM Vehicule v WHERE v.cout = :cout"),
-	@NamedQuery(name = "Vehicule.findByCapaciteutilisee", query = "SELECT v FROM Vehicule v WHERE v.capaciteutilisee = :capaciteutilisee"),
-	@NamedQuery(name = "Vehicule.findByCapacite", query = "SELECT v FROM Vehicule v WHERE v.capacite = :capacite"),
-	@NamedQuery(name = "Vehicle.findNotUsed", query = "SELECT v FROM Vehicule v WHERE v.nplanning = :null")}
-)
+		@NamedQuery(name = "Vehicule.findAll",
+			query = "SELECT v FROM Vehicule v"),
+		@NamedQuery(name = "Vehicule.findById",
+			query = "SELECT v FROM Vehicule v WHERE v.id = :id"),
+		@NamedQuery(name = "Vehicule.findByCout",
+			query = "SELECT v FROM Vehicule v WHERE v.cout = :cout"),
+		@NamedQuery(name = "Vehicule.findByCapaciteutilisee",
+			query = "SELECT v FROM Vehicule v WHERE v.capaciteutilisee = :capaciteutilisee"),
+		@NamedQuery(name = "Vehicule.findByCapacite",
+			query = "SELECT v FROM Vehicule v WHERE v.capacite = :capacite"),
+		@NamedQuery(name = "Vehicle.findNotUsed",
+			query = "SELECT v FROM Vehicule v WHERE v.nplanning = :null")
+})
 public class Vehicule implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -39,7 +45,6 @@ public class Vehicule implements Serializable {
 	@Basic(optional = false)
 	@Column(name = "ID")
 	private Integer id;
-	// @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
 	@Column(name = "COUT")
 	private Double cout;
 	@Column(name = "CAPACITEUTILISEE")
@@ -59,6 +64,9 @@ public class Vehicule implements Serializable {
 	@ManyToOne
 	private Instance instance;
 
+	/**
+	 * TODO.
+	 */
 	public Vehicule() {
 		this.id = -1;
 		this.clientList = new ArrayList<>();
@@ -68,6 +76,11 @@ public class Vehicule implements Serializable {
 		this.capacite = 0;
 	}
 
+	/**
+	 * TODO.
+	 * @param depot
+	 * @param capacite 
+	 */
 	public Vehicule(Depot depot, int capacite) {
 		this.clientList = new ArrayList<>();
 		this.ndepot = depot;
@@ -76,6 +89,12 @@ public class Vehicule implements Serializable {
 		this.capacite = capacite;
 	}
 
+	/**
+	 * TODO.
+	 * @param id
+	 * @param depot
+	 * @param capacite 
+	 */
 	public Vehicule(int id, Depot depot, int capacite) {
 		this.id = id;
 		this.clientList = new ArrayList<>();
@@ -92,7 +111,12 @@ public class Vehicule implements Serializable {
 		this.nplanning = null;
 	}
 
-	public boolean addClient(Client c){
+	/**
+	 * TODO.
+	 * @param c
+	 * @return 
+	 */
+	public boolean addClient(Client c) {
 		if (c == null) {
 			return false;
 		}
@@ -110,7 +134,7 @@ public class Vehicule implements Serializable {
 		return true;
 	}
 
-	private double calculateDeltaCost(Client c){
+	private double calculateDeltaCost(Client c) {
 		if (this.clientList.size() == 0) {
 			return this.ndepot.getDistanceTo(c) + c.getDistanceTo(ndepot);
 		}
@@ -119,7 +143,12 @@ public class Vehicule implements Serializable {
 				- clientList.get(clientList.size() - 1).getDistanceTo(ndepot);
 	}
 
-	public boolean setPlanning(Planning p){
+	/**
+	 * TODO.
+	 * @param p
+	 * @return 
+	 */
+	public boolean setPlanning(Planning p) {
 		if (p == null) {
 			return false;
 		}
@@ -130,9 +159,12 @@ public class Vehicule implements Serializable {
 		return true;
 	}
 
-	public void updatePositionClients(){
+	/**
+	 * TODO.
+	 */
+	public void updatePositionClients() {
 		int pos = 0;
-		for(Client c : clientList){
+		for(Client c : clientList) {
 			c.setPosition(pos);
 			pos++;
 		}
@@ -168,7 +200,8 @@ public class Vehicule implements Serializable {
 			return false;
 		}
 		Vehicule other = (Vehicule) object;
-		if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+		if ((this.id == null && other.id != null) || 
+				(this.id != null && !this.id.equals(other.id))) {
 			return false;
 		}
 		return true;
@@ -176,8 +209,9 @@ public class Vehicule implements Serializable {
 
 	@Override
 	public String toString() {
-		String str = "metier.Vehicule[ id=" + id + " cost=" + cout + " capa utilisee=" + capaciteutilisee + "]\n";
-		for (Client c : clientList){
+		String str = "metier.Vehicule[ id=" + id + " cost=" + cout 
+			+ " capa utilisee=" + capaciteutilisee + "]\n";
+		for (Client c : clientList) {
 			str += "\tid=" + c.getId() + " pos=" + c.getPosition() + "\n";
 		}
 		return str;
